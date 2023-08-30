@@ -1,24 +1,24 @@
 <script lang="ts">
-  import { Color } from "../utils/types";
+  import type { Color } from "../utils/types";
 
   export let title: string;
+  export let author: string;
   export let description: string;
   export let url: string;
-  export let tags: string[];
-  export let colors: Color[];
-
-  let index: number = 0;
+  export let tagsMap: Map<string, Color>;
 </script>
 
 <main>
   <a href={url}>
     <div class="container">
-      <h2>{title}</h2>
+      <b>{title}</b><br/>
+      <span class="author">{author}</span><br/>
       <p>{description}</p>
-      <div class="tag-container">
-        {#each tags as tag}
-          <span style="background-color: ${colors[index]};">{tag}</span>
-          {index++}
+      <div class="tags-container">
+        {#each tagsMap.keys() as tag}
+          <div class="tag-container" style="background-color: {tagsMap.get(tag).hexValue};">
+            <span class="tag">{tag}</span>
+          </div> 
         {/each}
       </div> 
     </div>
@@ -30,15 +30,38 @@
     font-family: system-ui;
   }
 
-  h2, p, span {
-    font-family: "system-ui";
+  b, p, span {
+    font-family: "system-ui"; 
+  }
+
+  b,p {
     color: black;
   }
 
-  .container {
-    width: 500px;
-    height: 200px;
-    padding: 10px;
+  a {
+    text-decoration: none;
+  }
+
+  span {
+    font-size: 10px; 
+  }
+
+  p {
+    font-size: 13px;
+  }
+
+  .tag {
+    color: black;
+  }
+
+  .author {
+    color: grey;
+  }
+
+  .container { 
+    width: 400px;
+    height: auto;
+    padding: 20px 10px;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, 
       rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
   }
@@ -51,11 +74,15 @@
       rgba(0, 0, 0, 0.09) 0px -3px 5px;
   }
 
-  a {
-    text-decoration: none;
+  .tags-container {
+    display: flex;
+    flex-direction: row;
+    justify-items: end;
   }
 
-  span {
-
+  .tag-container {
+    padding: 4px;
+    border-radius: 10px;
+    margin-right: 6px;
   }
 </style>

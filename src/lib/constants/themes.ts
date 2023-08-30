@@ -1,4 +1,5 @@
-import { Theme, ThemeMode } from "../utils/types";
+import type { Theme } from "../utils/types";
+import { ThemeMode } from "../utils/types";
 
 export const LightTheme: Theme = {
   name: "normal",
@@ -36,6 +37,6 @@ export const LightTheme: Theme = {
 
 export const DarkTheme: Theme = {
   name: "normal",
-  mode: ThemeMode.Light,
+  mode: ThemeMode.Dark,
   colors: []
 };

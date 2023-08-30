@@ -30,7 +30,7 @@
 <main>
  <div>
    <p class="time">{now.getHours() + ":" + (now.getMinutes() < 10 ? "0" + now.getMinutes() : now.getMinutes())}</p>
-   <p class="day">{dayNames[now.getDay()] + ", " + monthNames[now.getMonth() + 1] + " " + now.getDate() + ", " + now.getFullYear()}</p>
+   <p class="day">{dayNames[now.getDay()] + ", " + monthNames[now.getMonth()] + " " + now.getDate() + ", " + now.getFullYear()}</p>
  </div>  
 </main>
 
@@ -49,7 +49,7 @@
   }
 
   .day {
-    font-size: 20px;
+    font-size: 15px;
     font-family: "system-ui";
   }
 

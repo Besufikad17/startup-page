@@ -12,3 +12,11 @@ export type Theme = {
 export type Color = {
   hexValue: string;
 };
+
+export type Article = {
+  title: string;
+  author: string;
+  description: string;
+  url: string;
+  tags: string[]
+};
