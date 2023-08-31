@@ -5,9 +5,11 @@
   // import { fetchArticles } from "./lib/utils/api";
   import { onMount } from "svelte";
   import { Article } from "./lib/models/article";
-  
+  import Category from "./lib/components/Category.svelte";
+  import { categories } from "./lib/constants/sites";
+
   let articles: Article[] = [];
-  
+    
   const getArticles = async() => {
     const options = {
       method: 'GET',
@@ -37,7 +39,7 @@
   });
 </script>
 
-<main>
+<main class="container">
   <div class="row">
     <div class="col">
       <div class="row">
@@ -57,19 +59,47 @@
           {/each}
         {/if}
       </div>
-    </div>
+    </div> 
   </div> 
+  <div class="category-row">
+    <div class="col">
+      {#each categories as category}
+        <Category name="{category.name}" sites="{category.sites}" /> 
+      {/each}
+    </div>
+  </div>
 </main>
 
 <style>
+  .container {
+    display: flex;
+    flex-direction: row;
+  }
+
   .row {
     display: flex;
     flex-direction: column;
   } 
 
+  .category-row {
+    display: flex;
+    flex-direction: column; 
+    margin-left: 470px; 
+  }
+
   .col {
     display: flex;
     flex-direction: column;
     padding: 20px;
+  }
+
+  @media (max-width: 768px) {
+    .container {
+      flex-direction: column;
+    }
+
+    .category-row {
+      margin-left: 0px;
+    }
   }
 </style>

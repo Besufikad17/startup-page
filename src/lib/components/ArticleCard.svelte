@@ -16,7 +16,7 @@
 </script>
 
 <main>
-  <a href={url}>
+  <a href={url} target="_blank">
     <div class="container">
       <b>{title}</b><br/>
       <span class="author">{author}</span><br/>

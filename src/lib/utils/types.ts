@@ -12,3 +12,4 @@ export type Theme = {
 export type Color = {
   hexValue: string;
 };
+
