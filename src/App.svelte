@@ -1,17 +1,40 @@
 <script lang="ts">
   import DateTime from "./lib/components/DateTime.svelte";
-  import ArticleCard from "./lib/components/ArticleCard.svelte";
-  import { LightTheme } from "./lib/constants/themes"; 
-  import type { Color, Theme } from "./lib/utils/types";
+  import ArticleCard from "./lib/components/ArticleCard.svelte"; 
+  import axios from "axios";
+  // import { fetchArticles } from "./lib/utils/api";
+  import { onMount } from "svelte";
+  import { Article } from "./lib/models/article";
+  
+  let articles: Article[] = [];
+  
+  const getArticles = async() => {
+    const options = {
+      method: 'GET',
+      url: 'https://dev.to/api/articles'
+    };
+    axios.request(options)
+      .then((result) => {
+        for(var i = 0; i < 30; i++) {
+          articles.push(
+            new Article(
+              result.data[i]["title"],
+              result.data[i]["user"]["username"], 
+              result.data[i]["description"],
+              result.data[i]["url"],
+              result.data[i]["tag_list"]
+            )
+          ); 
+        } 
+      }
+    ).catch((e) => {
+      throw e;
+    });
+  };
 
-  let tags: string[] = ["modernweb", "webp", "frontend", "ecofriendly"];
-  let currentTheme: Theme = LightTheme;
-  let tagsMap = new Map<string, Color>();
-
-  tags.map((tag) => {
-    tagsMap.set(tag, currentTheme.colors[tags.indexOf(tag)])
+  onMount(async () => {
+    await getArticles();
   });
-
 </script>
 
 <main>
@@ -21,12 +44,18 @@
         <DateTime/>
       </div><br/><br/>
       <div class="row">
-        <ArticleCard 
-          title="The Power of WebP"
-          author="ekeijl"
-          description="How WebP can make your site load faster, and help save the planet." 
-          url="https://dev.to/nataliedeweerd/the-power-of-webp-2dlc" 
-          tagsMap={tagsMap} />
+        {#if articles.length === 0}
+         <span>Loading...</span>
+        {:else}
+          {#each articles as article}
+            <ArticleCard 
+              title={article.title}
+              author={article.author}
+              description={article.description} 
+              url={article.url}
+              tags={article.tags} />
+          {/each}
+        {/if}
       </div>
     </div>
   </div> 

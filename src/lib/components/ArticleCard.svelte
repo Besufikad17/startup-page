@@ -1,11 +1,18 @@
-<script lang="ts">
-  import type { Color } from "../utils/types";
+<script lang="ts"> 
+  import { LightTheme } from "../constants/themes"; 
+  import type { Color, Theme } from "../utils/types";
 
   export let title: string;
   export let author: string;
   export let description: string;
   export let url: string;
-  export let tagsMap: Map<string, Color>;
+  export let tags: string[];
+
+  let currentTheme: Theme = LightTheme;
+  let tagsMap: Map<string, Color> = new Map<string, Color>();
+  tags.map((tag) => {
+    tagsMap.set(tag, currentTheme.colors[tags.indexOf(tag)])
+  });
 </script>
 
 <main>
