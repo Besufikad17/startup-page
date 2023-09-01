@@ -1,10 +1,14 @@
 <script lang="ts">
   import Button from "./Button.svelte";
+  import themeMap from "../constants/themes";
 
   export let closeDialog: VoidFunction;
 
-  const save = () => {
+  let theme = "default";
+  let mode = "light";
 
+  const save = () => {
+    console.log(theme, mode);
   }
 </script>
 
@@ -13,17 +17,16 @@
     <h4>Settings</h4>
     <div class="action-section">
       <label for="themes">Themes: </label> 
-      <select name="themes" id="themes-menu"> 
-         <option>Default</option>
-         <option>Gruvbox</option>
-         <option>Tokyonight</option>
+      <select name="themes" id="themes-menu" bind:value={theme}> 
+         <option value="default">Default</option>
+         <option value="gruvbox">Gruvbox</option> 
       </select>
     </div>
     <div class="action-section">
       <label for="mode">Mode: </label>
-      <select name="mode" id="mode-menu"> 
-         <option>Light</option>
-         <option>Dark</option>
+      <select name="mode" id="mode-menu" bind:value={mode}> 
+         <option value="light">Light</option>
+         <option value="dark">Dark</option>
       </select>
     </div>
     <div class="action-section">
