@@ -1,0 +1,30 @@
+<script lang="ts">
+  export let text: string = ``;
+  export let bgColor: string = `white`;
+  export let fgColor: string = `black`;
+  export let borderRadius: string = `0px`;
+  export let borderColor: string = `black`;
+  export let width: string;
+  export let height: string;
+  export let onClick: VoidFunction;
+</script>
+
+<button 
+  style="width: {width};height: {height};background-color: {bgColor};"
+  on:click={onClick}
+>
+  {text}  
+</button>
+
+<style>
+  button {
+    background-color: var(--bgColor);
+    color: var(--color);
+    border-style: solid;
+    border-width: 1px;
+    border-color: var(--borderColor);
+    border-radius: var(--borderRadius);
+    width: var(--width);
+    height: var(--height);
+  } 
+</style>

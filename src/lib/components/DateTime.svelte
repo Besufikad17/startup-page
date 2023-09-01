@@ -12,16 +12,11 @@
 </main>
 
 <style>
-  @font-face {
-    font-family: system-ui;
-  }
-
   h2, p {
     margin: 0;
   }
 
   .time { 
-    font-family: "system-ui";
     font-size: 26px;
     font-style: normal;
     font-weight: 400;
@@ -30,7 +25,6 @@
 
   .day {
     font-size: 15px;
-    font-family: "system-ui";
   }
 
 </style>

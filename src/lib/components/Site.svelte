@@ -23,8 +23,13 @@
     height: 60px;
     border-style: solid;
     border-width: 2px;
+    transition: transform .2s;
     margin-right: 30px;
     align-items: center;
     justify-content: center; 
+  }
+
+  .card:hover {
+    transform: scale(1.5);
   }
 </style>

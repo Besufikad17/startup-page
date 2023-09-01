@@ -1,1 +1,7 @@
+@font-face {
+    font-family: system-ui;
+}
 
+* {
+  font-family: "system-ui";  
+}

@@ -1,9 +1,9 @@
 <script lang="ts">
   import Site from "./Site.svelte";
-  import type { SiteType }  from "../utils/types";
+  import { SiteModel }  from "../models/site";
 
   export let name: string;
-  export let sites: SiteType[];  
+  export let sites: SiteModel[];  
 </script>
 
 <main>
@@ -16,12 +16,7 @@
 </main>
 
 <style>
-  @font-face {
-    font-family: system-ui;
-  }
-
-  h2 {
-    font-family: "system-ui";
+  h2 { 
     font-size: 26px;
     font-style: normal;
     font-weight: 400;

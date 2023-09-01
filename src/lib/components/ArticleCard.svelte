@@ -33,14 +33,6 @@
 </main>
 
 <style>
-  @font-face {
-    font-family: system-ui;
-  }
-
-  b, p, span {
-    font-family: "system-ui"; 
-  }
-
   b,p {
     color: black;
   }

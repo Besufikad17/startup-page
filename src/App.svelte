@@ -1,11 +1,10 @@
 <script lang="ts">
   import DateTime from "./lib/components/DateTime.svelte";
   import ArticleCard from "./lib/components/ArticleCard.svelte"; 
-  import axios from "axios";
-  // import { fetchArticles } from "./lib/utils/api";
-  import { onMount } from "svelte";
-  import { Article } from "./lib/models/article";
   import Category from "./lib/components/Category.svelte";
+  import Header from "./lib/components/Header.svelte";
+  import { onMount } from "svelte";
+  import { Article } from "./lib/models/article"; 
   import { categories } from "./lib/constants/sites";
 
   let articles: Article[] = [
@@ -14,37 +13,14 @@
     new Article("Test", "Test", "Test", "Test", ["Test", "Test", "Test"]),
     new Article("Test", "Test", "Test", "Test", ["Test", "Test", "Test"])
   ];
-    
-  const getArticles = async() => {
-    const options = {
-      method: 'GET',
-      url: 'https://dev.to/api/articles'
-    };
-    axios.request(options)
-      .then((result) => {
-        for(var i = 0; i < 30; i++) {
-          articles.push(
-            new Article(
-              result.data[i]["title"],
-              result.data[i]["user"]["username"], 
-              result.data[i]["description"],
-              result.data[i]["url"],
-              result.data[i]["tag_list"]
-            )
-          ); 
-        } 
-      }
-    ).catch((e) => {
-      throw e;
-    });
-  };
-
+ 
   onMount(async () => {
-    //await getArticles();
+    
   });
 </script>
 
 <main>
+  <Header />
   <div class="container">
     <div class="left-row">
     <div class="col">
@@ -83,7 +59,6 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    margin: 10px;
     padding: 5px;
   }
   
@@ -99,14 +74,12 @@
 
   .right-row {
     display: flex;
-    flex-direction: column; 
-    margin-top: 50px;
+    flex-direction: column;  
   }
 
   .left-row {
     display: flex;
     flex-direction: column;
-    margin-top: 80px;
   }
 
   .col {
