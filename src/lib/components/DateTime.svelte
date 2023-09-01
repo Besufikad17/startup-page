@@ -6,7 +6,7 @@
 
 <main>
  <div>
-   <p class="time">{now.getHours() + ":" + (now.getMinutes() < 10 ? "0" + now.getMinutes() : now.getMinutes())}</p>
+   <h2 class="time">{now.getHours() + ":" + (now.getMinutes() < 10 ? "0" + now.getMinutes() : now.getMinutes())}</h2>
    <p class="day">{dayNames[now.getDay()] + ", " + monthNames[now.getMonth()] + " " + now.getDate() + ", " + now.getFullYear()}</p>
  </div>  
 </main>
@@ -16,7 +16,7 @@
     font-family: system-ui;
   }
 
-  p {
+  h2, p {
     margin: 0;
   }
 

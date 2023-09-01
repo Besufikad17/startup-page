@@ -69,16 +69,12 @@
     width: 400px;
     height: auto;
     padding: 20px 10px;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, 
-      rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+    margin-bottom: 20px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px; 
   }
 
   .container:hover {
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, 
-      rgba(0, 0, 0, 0.12) 0px -12px 30px, 
-      rgba(0, 0, 0, 0.12) 0px 4px 6px, 
-      rgba(0, 0, 0, 0.17) 0px 12px 13px, 
-      rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; 
   }
 
   .tags-container {

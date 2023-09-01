@@ -33,5 +33,6 @@
     flex-direction: row;
     justify-items: end;
     padding: 4px;
+    margin-bottom: 20px;
   } 
 </style>

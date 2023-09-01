@@ -8,7 +8,12 @@
   import Category from "./lib/components/Category.svelte";
   import { categories } from "./lib/constants/sites";
 
-  let articles: Article[] = [];
+  let articles: Article[] = [
+    new Article("Test", "Test", "Test", "Test", ["Test", "Test", "Test"]),
+    new Article("Test", "Test", "Test", "Test", ["Test", "Test", "Test"]),
+    new Article("Test", "Test", "Test", "Test", ["Test", "Test", "Test"]),
+    new Article("Test", "Test", "Test", "Test", ["Test", "Test", "Test"])
+  ];
     
   const getArticles = async() => {
     const options = {
@@ -35,14 +40,15 @@
   };
 
   onMount(async () => {
-    await getArticles();
+    //await getArticles();
   });
 </script>
 
-<main class="container">
-  <div class="row">
+<main>
+  <div class="container">
+    <div class="left-row">
     <div class="col">
-      <div class="row">
+      <div class="date-row">
         <DateTime/>
       </div><br/><br/>
       <div class="row">
@@ -61,30 +67,46 @@
       </div>
     </div> 
   </div> 
-  <div class="category-row">
+  <div class="right-row">
     <div class="col">
       {#each categories as category}
         <Category name="{category.name}" sites="{category.sites}" /> 
       {/each}
     </div>
   </div>
+  </div>  
 </main>
 
 <style>
   .container {
     display: flex;
     flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+    padding: 5px;
   }
-
-  .row {
-    display: flex;
-    flex-direction: column;
-  } 
-
-  .category-row {
+  
+  .date-row, .row {
     display: flex;
     flex-direction: column; 
-    margin-left: 470px; 
+  }
+
+  .row { 
+    max-height: 400px;
+    overflow-y: scroll;
+  } 
+
+  .right-row {
+    display: flex;
+    flex-direction: column; 
+    margin-top: 50px;
+  }
+
+  .left-row {
+    display: flex;
+    flex-direction: column;
+    margin-top: 80px;
   }
 
   .col {
@@ -93,12 +115,28 @@
     padding: 20px;
   }
 
+  ::-webkit-scrollbar {
+    width: 2px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+ 
+  ::-webkit-scrollbar-thumb {
+    background: #888; 
+  }
+ 
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
+
   @media (max-width: 768px) {
     .container {
       flex-direction: column;
     }
 
-    .category-row {
+    .left-row, .right-row {
       margin-left: 0px;
     }
   }
