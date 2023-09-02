@@ -9,11 +9,12 @@
     localStorage.getItem("theme").split("-")[1] : 
     "light";
 
-  const save = () => {
+  const save = () => { 
     localStorage.setItem("theme", `${theme}-${mode}`);
     closeDialog();
     location.reload();
   }
+
 </script>
 
 <main>
@@ -32,7 +33,7 @@
          <option value="light">Light</option>
          <option value="dark">Dark</option>
       </select>
-    </div>
+    </div> 
     <div class="action-section">
       <button on:click={save}>Save</button>
       <button on:click={closeDialog}>Close</button> 
@@ -59,8 +60,7 @@
   .container {
     width: 300px;
     display: flex;
-    flex-direction: column;
-    align-items: center; 
+    flex-direction: column; 
     text-align: center;
   }
 
@@ -72,6 +72,7 @@
 
   .action-section * {
     float: left;
+    margin-left: 10px;
     margin-right: 15px;
     margin-bottom: 10px;
   }

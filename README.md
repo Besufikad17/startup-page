@@ -1,47 +1,69 @@
-# Svelte + TS + Vite
+# startup-page
 
-This template should help get you started developing with Svelte and TypeScript in Vite.
+Inspired by [r/unixporn](https://www.reddit.com/r/unixporn/) posts I created my own Home page for browsers.
 
-## Recommended IDE Setup
+## usage
 
-[VS Code](https://code.visualstudio.com/) + [Svelte](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode).
-
-## Need an official Svelte framework?
-
-Check out [SvelteKit](https://github.com/sveltejs/kit#readme), which is also powered by Vite. Deploy anywhere with its serverless-first approach and adapt to various platforms, with out of the box support for TypeScript, SCSS, and Less, and easily-added support for mdsvex, GraphQL, PostCSS, Tailwind CSS, and more.
-
-## Technical considerations
-
-**Why use this over SvelteKit?**
-
-- It brings its own routing solution which might not be preferable for some users.
-- It is first and foremost a framework that just happens to use Vite under the hood, not a Vite app.
-
-This template contains as little as possible to get started with Vite + TypeScript + Svelte, while taking into account the developer experience with regards to HMR and intellisense. It demonstrates capabilities on par with the other `create-vite` templates and is a good starting point for beginners dipping their toes into a Vite + Svelte project.
-
-Should you later need the extended capabilities and extensibility provided by SvelteKit, the template has been structured similarly to SvelteKit so that it is easy to migrate.
-
-**Why `global.d.ts` instead of `compilerOptions.types` inside `jsconfig.json` or `tsconfig.json`?**
-
-Setting `compilerOptions.types` shuts out all other types not explicitly listed in the configuration. Using triple-slash references keeps the default TypeScript setting of accepting type information from the entire workspace, while also adding `svelte` and `vite/client` type information.
-
-**Why include `.vscode/extensions.json`?**
-
-Other templates indirectly recommend extensions via the README, but this file allows VS Code to prompt the user to install the recommended extension upon opening the project.
-
-**Why enable `allowJs` in the TS template?**
-
-While `allowJs: false` would indeed prevent the use of `.js` files in the project, it does not prevent the use of JavaScript syntax in `.svelte` files. In addition, it would force `checkJs: false`, bringing the worst of both worlds: not being able to guarantee the entire codebase is TypeScript, and also having worse typechecking for the existing JavaScript. In addition, there are valid use cases in which a mixed codebase may be relevant.
-
-**Why is HMR not preserving my local component state?**
-
-HMR state preservation comes with a number of gotchas! It has been disabled by default in both `svelte-hmr` and `@sveltejs/vite-plugin-svelte` due to its often surprising behavior. You can read the details [here](https://github.com/rixo/svelte-hmr#svelte-hmr).
-
-If you have state that's important to retain within a component, consider creating an external store which would not be replaced by HMR.
-
-```ts
-// store.ts
-// An extremely simple external store
-import { writable } from 'svelte/store'
-export default writable(0)
+1. Clone the repo 
+```bash
+   git clone https://github.com/Besufikad17/startup-page.git & cd startup-page
 ```
+2. Install packages
+```bash
+   npm install
+```
+3. Add cutom theme (optional)
+- You can add custom theme using the following format in `themes.ts` file which is located in `lib\src\constants` folder.
+```ts
+   // creating theme instance    
+   export ThemeName: Theme = {
+    name: "theme name",
+    mode: "light or dark",
+    bg: "hex value of background color",
+    fg: "hex value of text color",
+    colors: ["list of hex values of colors u want to use for article tags"]
+   }
+   
+   // adding the theme instance to map of themes with  
+   themeMap.set("themeName-mode", ThemeName);
+```
+
+4. Add/Remove sites (optional)
+- You can add/remove sites by editing `sites.ts` file which is located in `lib\src\constants` folder. To remove site or category u can delete the corresponding `SiteModel` or `CategoryModel` object from `categories` list.
+    - To add new site get the icon from [iconify](https://icon-sets.iconify.design/) and use the follwing format:
+    ```ts
+       export const categories: CategoryModel[] = [
+            ...,
+            new CategoryModel(
+                "category name"
+                [ 
+                    ...,
+                    new SiteModel("icon name", "site url")      // adding new SiteModel instance to categrories list
+                ]
+            )
+       ];
+    ```
+    - To add new category t
+    ```ts
+        export const categories: CategoryModel[] = [
+            ...,
+            new CategoryModel(                                  // adding new CategoryModel instance to categrories list
+                "category name"
+                [ 
+                    ...                                         // list of sites in form of SiteModel insance
+                ]
+            )
+       ];
+    ```
+5. Deploying 
+- You can deploy the project in free hosting platforms like [vercel](https://vercel.com/) or [netlify](https://www.netlify.com/) or by running it locally using `npm run dev`.
+
+6. Setting as home page in browsers.
+- Chrome
+- Firefox
+
+**Note**
+- If you ran into any issues while configuring it feel free to submit issue or contact me.
+
+
+    
