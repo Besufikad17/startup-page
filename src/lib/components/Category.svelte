@@ -10,7 +10,7 @@
   <h2>{name}</h2>
   <div class="container"> 
     {#each sites as site}
-      <Site imgUrl="{site.imgUrl}" url="{site.url}" />
+      <Site iconName="{site.iconName}" url="{site.url}" />
     {/each}
   </div>
 </main>

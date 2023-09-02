@@ -1,9 +1,9 @@
 export class SiteModel {
-  imgUrl: string;
+  iconName: string;
   url: string;
 
-  constructor(imgUrl: string, url: string) {
-    this.imgUrl = imgUrl;
+  constructor(iconName: string, url: string) {
+    this.iconName = iconName;
     this.url = url;
   }
 }

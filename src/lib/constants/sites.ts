@@ -5,28 +5,31 @@ export const categories: CategoryModel[] = [
   new CategoryModel(
     "Socials",
     [
-      new SiteModel("../src/assets/images/icons8-reddit-60.png", "https://reddit.com/"),
-      new SiteModel("../src/assets/images/icons8-linkedin-50.png", "https://linkedin.com/"),
-      new SiteModel("../src/assets/images/icons8-x-50.png", "https://x.com/"),
-      new SiteModel("../src/assets/images/icons8-discord-50.png", "https://discord.com/")
+      new SiteModel("ic:baseline-reddit", "https://reddit.com/"),
+      new SiteModel("mdi:linkedin", "https://linkedin.com/"),
+      new SiteModel("simple-icons:x", "https://x.com/"),
+      new SiteModel("ic:baseline-discord", "https://discord.com/"),
+      new SiteModel("simple-icons:myanimelist", "https://myanimelist.net/")
     ]
   ),
   new CategoryModel(
     "Streaming sites",
     [
-      new SiteModel("../src/assets/images/icons8-twitch-50.png", "https://twitch.com/"),
-      new SiteModel("../src/assets/images/icons8-spotify-50.png", "https://spotify.com/"),
-      new SiteModel("../src/assets/images/icons8-youtube-50.png", "https://youtube.com/"),
-      new SiteModel("../src/assets/images/icons8-lastfm-50.png", "https://www.last.fm/")
+      new SiteModel("simple-icons:twitch", "https://twitch.com/"),
+      new SiteModel("simple-icons:spotify", "https://spotify.com/"),
+      new SiteModel("simple-icons:youtube", "https://youtube.com/"),
+      new SiteModel("arcticons:zoro-to", "https://aniwatch.to/"),
+      new SiteModel("material-symbols:movie", "https://movies2watch.ru/home")
     ]
   ),
   new CategoryModel(
     "Productivity",
     [
-      new SiteModel("../src/assets/images/icons8-github-60.png", "https://github.com/"),
-      new SiteModel("../src/assets/images/icons8-notion-50.png", "https://notion.com/"),
-      new SiteModel("../src/assets/images/icons8-stack-overflow-50.png", "https://stackoverflow.com/"),
-      new SiteModel("../src/assets/images/wakatime.svg", "https://wakatime.com/")
+      new SiteModel("simple-icons:github", "https://github.com/"),
+      new SiteModel("simple-icons:notion", "https://notion.com/"),
+      new SiteModel("mdi:stackoverflow", "https://stackoverflow.com/"),
+      new SiteModel("simple-icons:wakatime", "https://wakatime.com/"),
+      new SiteModel("solar:figma-bold", "https://figma.com")
     ]
   )
 ];

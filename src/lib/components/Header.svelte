@@ -1,5 +1,6 @@
 <script lang="ts">
   import { onMount } from "svelte";
+  import Icon from "@iconify/svelte";
   import Settings from "./Settings.svelte";
 
   let dialog;
@@ -20,12 +21,7 @@
 <main>
   <div class="parent" >
     <button class="logo" on:click={showDialog}>
-      <img 
-         src="../src/assets/images/icons8-settings-50.png" 
-         width="30" 
-         height="30" 
-         alt="settings"
-      />
+      <Icon icon="material-symbols:settings" width="30" height="30"/> 
     </button>
   </div>
   <dialog id="setting">
@@ -34,23 +30,31 @@
 </main>
 
 <style>
+  main {
+    background-color: var(--theme-background);
+    color: var(--theme-text);
+  }
+
   .parent {
     width: auto;
     height: 50%;
     overflow: hidden;
     padding: 20px 10px;
-    background-color: rgb(255, 255, 255);
+    background-color: var(--theme-background);
   }
   
   .logo {
     float: right;
     margin-left: 10px;
     border-style: none;
-    background-color: white;
+    background-color: var(--theme-background);
+    color: var(--theme-text);
   }
-
+  
   dialog {
-		border-width: 2px;
+    background-color: var(--theme-background);
+    border-width: 1px;
+    border-color: var(--theme-text);
 		transition: all 2s;
 	}
   

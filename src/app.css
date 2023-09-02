@@ -5,3 +5,9 @@
 * {
   font-family: "system-ui";  
 }
+
+body, select {
+  background-color: var(--theme-background);
+  color: var(--theme-text);
+}
+

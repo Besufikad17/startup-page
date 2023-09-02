@@ -1,5 +1,5 @@
 <script lang="ts"> 
-  import { LightTheme } from "../constants/themes"; 
+  import { DefaultLightTheme, themeMap } from "../constants/themes"; 
   import type { Color, Theme } from "../utils/types";
 
   export let title: string;
@@ -7,8 +7,9 @@
   export let description: string;
   export let url: string;
   export let tags: string[];
-
-  let currentTheme: Theme = LightTheme;
+   
+  let currentTheme: Theme = localStorage.getItem("theme") ? 
+    themeMap.get(localStorage.getItem("theme")) : DefaultLightTheme;
   let tagsMap: Map<string, Color> = new Map<string, Color>();
   tags.map((tag) => {
     tagsMap.set(tag, currentTheme.colors[tags.indexOf(tag)])
@@ -34,7 +35,7 @@
 
 <style>
   b,p {
-    color: black;
+    color: var(--theme-text);
   }
 
   a {
@@ -50,7 +51,7 @@
   }
 
   .tag {
-    color: black;
+    color: var(--theme-text);
   }
 
   .author {
@@ -61,12 +62,14 @@
     width: 400px;
     height: auto;
     padding: 20px 10px;
-    margin-bottom: 20px;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px; 
+    margin-bottom: 20px; 
+    transition: transform .2s;
   }
 
   .container:hover {
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; 
+    border-style: solid;
+    border-width: 2px;
+    border-color: var(--theme-text); 
   }
 
   .tags-container {

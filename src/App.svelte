@@ -6,6 +6,7 @@
   import { onMount } from "svelte";
   import { Article } from "./lib/models/article"; 
   import { categories } from "./lib/constants/sites";
+  import { DefaultLightTheme, themeMap } from "./lib/constants/themes";
 
   let articles: Article[] = [
     new Article("Test", "Test", "Test", "Test", ["Test", "Test", "Test"]),
@@ -13,9 +14,18 @@
     new Article("Test", "Test", "Test", "Test", ["Test", "Test", "Test"]),
     new Article("Test", "Test", "Test", "Test", ["Test", "Test", "Test"])
   ];
- 
+
   onMount(async () => {
-    
+    if(localStorage.getItem("theme")) {
+      let theme = themeMap.get(localStorage.getItem("theme"));
+      document.documentElement.style.setProperty('--theme-background', theme.bg.hexValue);
+      document.documentElement.style.setProperty('--theme-text', theme.fg.hexValue);
+      document.documentElement.style.setProperty('--theme-name', theme.name)
+    }else {
+      document.documentElement.style.setProperty('--theme-background', DefaultLightTheme.bg.hexValue);
+      document.documentElement.style.setProperty('--theme-text', DefaultLightTheme.fg.hexValue); 
+      document.documentElement.style.setProperty('--theme-name', DefaultLightTheme.name)
+    }
   });
 </script>
 
@@ -54,6 +64,11 @@
 </main>
 
 <style>
+  main {
+    background-color: var(--theme-background);
+    color: var(--theme-text);
+  }
+
   .container {
     display: flex;
     flex-direction: row;
@@ -89,19 +104,7 @@
   }
 
   ::-webkit-scrollbar {
-    width: 2px;
-  }
-
-  ::-webkit-scrollbar-track {
-    background: #f1f1f1; 
-  }
- 
-  ::-webkit-scrollbar-thumb {
-    background: #888; 
-  }
- 
-  ::-webkit-scrollbar-thumb:hover {
-    background: #555; 
+    display: none;
   }
 
   @media (max-width: 768px) {

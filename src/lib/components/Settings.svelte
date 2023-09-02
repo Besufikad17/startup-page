@@ -1,14 +1,18 @@
 <script lang="ts">
-  import Button from "./Button.svelte";
-  import themeMap from "../constants/themes";
-
   export let closeDialog: VoidFunction;
 
-  let theme = "default";
-  let mode = "light";
+  let theme = localStorage.getItem("theme") ? 
+    localStorage.getItem("theme").split("-")[0] : 
+    "default";
+  
+  let mode = localStorage.getItem("theme") ? 
+    localStorage.getItem("theme").split("-")[1] : 
+    "light";
 
   const save = () => {
-    console.log(theme, mode);
+    localStorage.setItem("theme", `${theme}-${mode}`);
+    closeDialog();
+    location.reload();
   }
 </script>
 
@@ -30,33 +34,28 @@
       </select>
     </div>
     <div class="action-section">
-      <Button 
-        text="Save" 
-        bgColor="#fff" 
-        fgColor="#000" 
-        borderRadius="0px" 
-        borderColor="#000"
-        width="60px"
-        height="30px"
-        margin="10px"
-        onClick={save}
-      />
-      <Button 
-        text="Close" 
-        bgColor="#fff" 
-        fgColor="#000" 
-        borderRadius="0px" 
-        borderColor="#000"
-        width="60px"
-        height="30px"
-        margin="10px"
-        onClick={closeDialog}
-      /> 
+      <button on:click={save}>Save</button>
+      <button on:click={closeDialog}>Close</button> 
     </div>
   </div>
 </main>
 
 <style>
+  main {
+    background-color: var(--theme-background);
+    color: var(--theme-text);
+  }
+
+  button {
+    background-color: var(--theme-background);
+    color: var(--theme-text);
+    width: 60px;
+    height: 30px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: var(--theme-text);
+  }
+
   .container {
     width: 300px;
     display: flex;
