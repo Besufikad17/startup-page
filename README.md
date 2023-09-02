@@ -81,8 +81,8 @@ Inspired by [r/unixporn](https://www.reddit.com/r/unixporn/) posts I created my 
 - You can deploy the project in free hosting platforms like [vercel](https://vercel.com/) or [netlify](https://www.netlify.com/) or by running it locally using `npm run dev`.
 
 6. Setting as home page in browsers.
-- Chrome
-- Firefox
+- [Chrome](https://support.google.com/chrome/answer/95314?hl=en&co=GENIE.Platform%3DDesktop)
+- [Firefox](https://support.mozilla.org/en-US/kb/customize-your-new-tab-page)
 
 **Note**
 - If you ran into any issues while configuring it feel free to submit issue or contact me.
