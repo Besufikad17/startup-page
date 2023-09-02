@@ -2,6 +2,23 @@
 
 Inspired by [r/unixporn](https://www.reddit.com/r/unixporn/) posts I created my own Home page for browsers.
 
+## preview
+**Gruvbox Dark**
+![default light](media/default-light.png)
+![default light](media/default-light2.png)
+
+**Gruvbox Dark**
+![default dark](media/default-dark.png)
+![default dark](media/default-dark2.png)
+
+**Gruvbox Dark**
+![gruvbox light](media/gruvbox-light.png)
+![gruvbox light](media/gruvbox-light2.png)
+
+**Gruvbox Dark**
+![gruvbox dark](media/gruvbox-dark.png)
+![gruvbox dark](media/gruvbox-dark2.png)
+
 ## usage
 
 1. Clone the repo 
@@ -14,6 +31,7 @@ Inspired by [r/unixporn](https://www.reddit.com/r/unixporn/) posts I created my 
 ```
 3. Add cutom theme (optional)
 - You can add custom theme using the following format in `themes.ts` file which is located in `lib\src\constants` folder.
+
 ```ts
    // creating theme instance    
    export ThemeName: Theme = {
@@ -30,7 +48,9 @@ Inspired by [r/unixporn](https://www.reddit.com/r/unixporn/) posts I created my 
 
 4. Add/Remove sites (optional)
 - You can add/remove sites by editing `sites.ts` file which is located in `lib\src\constants` folder. To remove site or category u can delete the corresponding `SiteModel` or `CategoryModel` object from `categories` list.
+
     - To add new site get the icon from [iconify](https://icon-sets.iconify.design/) and use the follwing format:
+
     ```ts
        export const categories: CategoryModel[] = [
             ...,
@@ -43,7 +63,9 @@ Inspired by [r/unixporn](https://www.reddit.com/r/unixporn/) posts I created my 
             )
        ];
     ```
-    - To add new category t
+
+    - To add new category use the following format:
+
     ```ts
         export const categories: CategoryModel[] = [
             ...,
