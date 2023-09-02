@@ -3,15 +3,15 @@
 Inspired by [r/unixporn](https://www.reddit.com/r/unixporn/) posts I created my own Home page for browsers.
 
 ## preview
-**Gruvbox Dark**
+**Default Light**
 ![default light](media/default-light.png)
 ![default light](media/default-light2.png)
 
-**Gruvbox Dark**
+**Default Dark**
 ![default dark](media/default-dark.png)
 ![default dark](media/default-dark2.png)
 
-**Gruvbox Dark**
+**Gruvbox Light**
 ![gruvbox light](media/gruvbox-light.png)
 ![gruvbox light](media/gruvbox-light2.png)
 
