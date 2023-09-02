@@ -7,13 +7,19 @@
   export let description: string;
   export let url: string;
   export let tags: string[];
-   
+
+  const maptagToColor = (tags: string[]) => {
+    let myMap: Map<string, Color> = new Map<string, Color>();
+    tags.map(tag => {
+      myMap.set(tag, currentTheme.colors[tags.indexOf(tag)])
+    });
+    return myMap;
+  }
+
   let currentTheme: Theme = localStorage.getItem("theme") ? 
     themeMap.get(localStorage.getItem("theme")) : DefaultLightTheme;
-  let tagsMap: Map<string, Color> = new Map<string, Color>();
-  tags.map((tag) => {
-    tagsMap.set(tag, currentTheme.colors[tags.indexOf(tag)])
-  });
+  let tagsMap: Map<string, Color> = maptagToColor(tags);
+ 
 </script>
 
 <main>

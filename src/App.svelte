@@ -3,19 +3,37 @@
   import ArticleCard from "./lib/components/ArticleCard.svelte"; 
   import Category from "./lib/components/Category.svelte";
   import Header from "./lib/components/Header.svelte";
+  import axios from "axios";
   import { onMount } from "svelte";
   import { Article } from "./lib/models/article"; 
   import { categories } from "./lib/constants/sites";
   import { DefaultLightTheme, themeMap } from "./lib/constants/themes";
+  
 
-  let articles: Article[] = [
-    new Article("Test", "Test", "Test", "Test", ["Test", "Test", "Test"]),
-    new Article("Test", "Test", "Test", "Test", ["Test", "Test", "Test"]),
-    new Article("Test", "Test", "Test", "Test", ["Test", "Test", "Test"]),
-    new Article("Test", "Test", "Test", "Test", ["Test", "Test", "Test"])
-  ];
+  let articles = [];
+
+  const fetch = async() => { 
+    axios.get("https://dev.to/api/articles").then(result => {
+      let datas = [];
+      for(var i = 0; i < 30; i++) {
+          datas.push(
+            new Article(
+              result.data[i]["title"],
+              result.data[i]["user"]["username"], 
+              result.data[i]["description"],
+              result.data[i]["url"],
+              result.data[i]["tag_list"]
+            )
+          ); 
+      }
+      articles = [...datas];
+    }).catch(err => {
+      console.log(err)
+    })
+  }
 
   onMount(async () => {
+    fetch(); 
     if(localStorage.getItem("theme")) {
       let theme = themeMap.get(localStorage.getItem("theme"));
       document.documentElement.style.setProperty('--theme-background', theme.bg.hexValue);
@@ -41,7 +59,7 @@
         {#if articles.length === 0}
          <span>Loading...</span>
         {:else}
-          {#each articles as article}
+          {#each articles as article} 
             <ArticleCard 
               title={article.title}
               author={article.author}
